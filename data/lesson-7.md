@@ -1,27 +1,15 @@
+## Flashcard
 
-
-## Tri thức kinh nghiệm
-
-Được hình thành trực tiếp từ thực tiễn.
-
-Đặc điểm:
-
-- Mang tính cụ thể.
-- Chưa phản ánh đầy đủ bản chất sự vật.
-- Là cơ sở cho sự hình thành lý luận.
-
-## Tri thức lý luận
-
-Được hình thành thông qua quá trình khái quát hóa.
-
-Đặc điểm:
-
-- Mang tính hệ thống.
-- Phản ánh bản chất và quy luật.
-- Có khả năng dự báo.
-
-## Quan hệ giữa kinh nghiệm và lý luận
-
-- Kinh nghiệm là cơ sở của lý luận.
-- Lý luận định hướng cho kinh nghiệm.
-- Hai mặt thống nhất với nhau trong quá trình nhận thức.
+| Mặt trước | Mặt sau |
+|---|---|
+| CSHT là gì? | Toàn bộ quan hệ sản xuất hợp thành cơ cấu kinh tế của xã hội |
+| 3 loại QHSX trong CSHT | Thống trị – Tàn dư – Mầm mống |
+| KTTT gồm mấy bộ phận? | 2: Hình thái ý thức xã hội + Thiết chế chính trị – xã hội |
+| "Xương sống" của KTTT | Nhà nước |
+| 3 khía cạnh CSHT quyết định KTTT | Sự ra đời – Tính chất, cấu trúc – Sự biến đổi |
+| Yếu tố KTTT đổi nhanh / chậm | Nhanh: chính trị, pháp luật / Chậm: đạo đức, tôn giáo, phong tục |
+| Khi nào KTTT thúc đẩy CSHT? | Khi phù hợp (cùng chiều) với quy luật kinh tế khách quan |
+| Duy tâm, duy ý chí | Tuyệt đối hóa chính trị, ép QHSX vượt trình độ LLSX |
+| Duy vật kinh tế tầm thường | Tuyệt đối hóa kinh tế, xem nhẹ thể chế, pháp luật |
+| 4 định hướng xây dựng NNPQ XHCN | Hoàn thiện thể chế – Quyền làm chủ của Nhân dân – Kiểm soát quyền lực – Hài hòa CSHT/KTTT |
+| Nghị quyết về pháp luật kiến tạo phát triển | Nghị quyết 66-NQ/TW |

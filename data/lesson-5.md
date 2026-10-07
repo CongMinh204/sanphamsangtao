@@ -1,45 +1,21 @@
+![Hai sai lầm cần tránh: duy ý chí tuyệt đối hóa chính trị, duy vật kinh tế tầm thường tuyệt đối hóa kinh tế; cách đúng là kết hợp cân bằng](images/lesson-5-hai-sai-lam.png)
 
+## Nguyên tắc khách quan
 
-## Quan điểm của Lênin
+Xuất phát từ **cơ sở kinh tế – xã hội**, không xuất phát từ ý chí chủ quan.
 
-Lênin khẳng định:
+## 2 sai lầm cần tránh
 
-"Từ trực quan sinh động đến tư duy trừu tượng, từ tư duy trừu tượng đến thực tiễn, đó là con đường biện chứng của nhận thức chân lý."
+| Sai lầm | Biểu hiện |
+|---|---|
+| **Duy tâm, duy ý chí** | Tuyệt đối hóa chính trị; dùng mệnh lệnh hành chính ép QHSX vượt trình độ LLSX |
+| **Duy vật kinh tế tầm thường** | Tuyệt đối hóa kinh tế; xem nhẹ vai trò của thể chế, pháp luật |
 
-## Giai đoạn nhận thức cảm tính
+## Bài học ở Việt Nam
 
-Là giai đoạn đầu tiên của quá trình nhận thức.
+- Đảng phải **xuất phát từ thực tế, tôn trọng quy luật khách quan**.
+- Đổi mới kinh tế và đổi mới hệ thống chính trị phải làm **đồng thời, kết hợp chặt chẽ**.
 
-Các hình thức:
+## ⚠️ Bẫy hay gặp
 
-### Cảm giác
-
-Phản ánh những thuộc tính riêng lẻ của sự vật khi chúng tác động trực tiếp vào giác quan.
-
-### Tri giác
-
-Phản ánh tương đối toàn vẹn sự vật.
-
-### Biểu tượng
-
-Hình ảnh của sự vật được lưu giữ trong trí nhớ.
-
-## Giai đoạn nhận thức lý tính
-
-### Khái niệm
-
-Phản ánh những thuộc tính bản chất của sự vật.
-
-### Phán đoán
-
-Liên kết các khái niệm để khẳng định hoặc phủ định.
-
-### Suy luận
-
-Rút ra tri thức mới từ các tri thức đã có.
-
-## Thực tiễn
-
-Là nơi kiểm nghiệm tính đúng đắn của nhận thức.
-
-Nhận thức chỉ hoàn chỉnh khi quay trở lại phục vụ hoạt động thực tiễn.
+- Hay bị đảo định nghĩa hai sai lầm: **duy ý chí = tuyệt đối hóa chính trị**; **duy vật kinh tế tầm thường = tuyệt đối hóa kinh tế**.

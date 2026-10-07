@@ -1,78 +1,44 @@
 [
   {
     "id": 1,
-    "title": "Bản chất của nhận thức",
-    "summary": "Trình bày các quan niệm về nhận thức trước Mác và quan điểm của chủ nghĩa duy vật biện chứng.",
+    "title": "Tổng quan quy luật CSHT – KTTT",
+    "summary": "Sơ đồ mối quan hệ: CSHT quyết định KTTT, KTTT tác động trở lại CSHT, và lộ trình 5 module ôn tập.",
     "file": "data/lesson-1.md"
   },
   {
     "id": 2,
-    "title": "Chủ thể nhận thức",
-    "summary": "Khái niệm, đặc điểm và vai trò của chủ thể nhận thức.",
+    "title": "Khái niệm CSHT & KTTT",
+    "summary": "Định nghĩa cơ sở hạ tầng với 3 loại quan hệ sản xuất, kiến trúc thượng tầng với 2 bộ phận và vai trò \"xương sống\" của Nhà nước.",
     "file": "data/lesson-2.md"
   },
   {
     "id": 3,
-    "title": "Khách thể nhận thức",
-    "summary": "Khái niệm khách thể nhận thức và sự khác biệt với đối tượng nhận thức.",
+    "title": "CSHT quyết định KTTT",
+    "summary": "CSHT quyết định sự ra đời, tính chất, cấu trúc và sự biến đổi của KTTT; case study Đổi mới 1986.",
     "file": "data/lesson-3.md"
   },
   {
     "id": 4,
-    "title": "Quan hệ giữa chủ thể và khách thể nhận thức",
-    "summary": "Mối quan hệ biện chứng giữa chủ thể và khách thể.",
+    "title": "KTTT tác động trở lại CSHT",
+    "summary": "Tính độc lập tương đối của KTTT, hai chiều tác động thúc đẩy hoặc kìm hãm và vai trò đặc biệt của Nhà nước.",
     "file": "data/lesson-4.md"
   },
   {
     "id": 5,
-    "title": "Con đường biện chứng của nhận thức chân lý",
-    "summary": "Từ trực quan sinh động đến tư duy trừu tượng và trở lại thực tiễn.",
+    "title": "Ý nghĩa phương pháp luận",
+    "summary": "Nguyên tắc khách quan, hai sai lầm cần tránh (duy ý chí và duy vật kinh tế tầm thường) và bài học ở Việt Nam.",
     "file": "data/lesson-5.md"
   },
   {
     "id": 6,
-    "title": "Lý luận",
-    "summary": "Bản chất và cấu trúc của hoạt động lý luận.",
+    "title": "Xây dựng Nhà nước pháp quyền XHCN",
+    "summary": "Bốn định hướng xây dựng Nhà nước pháp quyền XHCN ở Việt Nam và sáu giải pháp kiểm soát quyền lực.",
     "file": "data/lesson-6.md"
   },
   {
     "id": 7,
-    "title": "Thực tiễn",
-    "summary": "Khái niệm, hình thức và vai trò của thực tiễn.",
+    "title": "Flashcard ôn tập",
+    "summary": "Các câu hỏi – đáp ngắn giúp ghi nhớ nhanh những khái niệm và con số quan trọng.",
     "file": "data/lesson-7.md"
-  },
-  {
-    "id": 8,
-    "title": "Mối quan hệ giữa lý luận và thực tiễn",
-    "summary": "Vai trò của lý luận đối với thực tiễn và ngược lại.",
-    "file": "data/lesson-8.md"
-  },
- 
-  {
-    "id": 9,
-    "title": "Mối quan hệ giữa lý luận và thực tiễn",
-    "summary": "Vai trò của lý luận đối với thực tiễn và ngược lại.",
-    "file": "data/lesson-9.md"
-  },
- 
-  {
-    "id": 10,
-    "title": "Mối quan hệ giữa lý luận và thực tiễn",
-    "summary": "Vai trò của lý luận đối với thực tiễn và ngược lại.",
-    "file": "data/lesson-10.md"
-  },
-
-  {
-    "id": 11,
-    "title": "Mối quan hệ giữa lý luận và thực tiễn",
-    "summary": "Vai trò của lý luận đối với thực tiễn và ngược lại.",
-    "file": "data/lesson-11.md"
-  }
-  ,
-  {
-    "id": 12,
-    "title": "Mối quan hệ giữa lý luận và thực tiễn",
-    "summary": "Vai trò của lý luận đối với thực tiễn và ngược lại.",
-    "file": "data/lesson-12.md"
   }
 ]

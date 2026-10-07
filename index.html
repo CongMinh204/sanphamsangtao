@@ -3,59 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lý Luận Nhận Thức</title>
+    <title>Cơ Sở Hạ Tầng & Kiến Trúc Thượng Tầng</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;0,900;1,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Be+Vietnam+Pro:wght@500;600;700&display=swap&subset=vietnamese" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-    <h1>LÝ LUẬN NHẬN THỨC</h1>
-    <p>Trang học tập và ôn luyện kiến thức Triết học Mác - Lênin</p>
-
-    <button id="darkModeBtn">🌙 Dark Mode</button>
+<header class="masthead">
+    <div class="wrap masthead-row">
+        <span class="label">MLN111 — Nhóm 8</span>
+        <span class="masthead-title">Tạp chí Ôn tập Triết học</span>
+        <div class="masthead-right">
+            <span class="label" id="todayDate"></span>
+            <button id="darkModeBtn" class="pill">Giao diện tối</button>
+        </div>
+    </div>
 </header>
 
-<section class="controls">
+<section class="hero wrap">
+    <h1 class="hero-band">Cơ sở hạ tầng</h1>
+    <p class="hero-sub">&amp; Kiến trúc thượng tầng</p>
 
-    <input
-        type="text"
-        id="searchInput"
-        placeholder="Tìm kiếm bài học..."
-    >
+    <div class="hero-grid">
+        <div class="hero-col">
+            <p class="dropcap">
+                Theo chủ nghĩa duy vật lịch sử, đời sống vật chất quyết định đời sống
+                chính trị, tinh thần. Trang này hệ thống hóa quy luật CSHT – KTTT qua
+                5 module, flashcard và bộ câu hỏi trắc nghiệm.
+            </p>
 
-    <div class="progress-wrapper">
-        <div id="progressBar"></div>
+            <figure class="figure">
+                <img src="images/home-quan-he-san-xuat.png"
+                     alt="Những người thợ thủ công cùng lao động trong xưởng gỗ">
+                <figcaption><span class="label">Hình 01</span> Con người trong quan hệ sản xuất — nền móng của mọi xã hội.</figcaption>
+            </figure>
+        </div>
+
+        <figure class="figure figure-tall">
+            <img src="images/home-can-can-xa-hoi.png"
+                 alt="Tranh khắc: một người đặt tay lên cán cân giữa đám đông, các bảng ghi Cân bằng xã hội, Hệ thống niềm tin, Trách nhiệm chung">
+            <figcaption><span class="label">Hình 02</span> Pháp luật, đạo đức, niềm tin — kiến trúc thượng tầng giữ cán cân xã hội.</figcaption>
+        </figure>
+
+        <div class="hero-col">
+            <p class="statement">
+                Cơ sở hạ tầng quyết định kiến trúc thượng tầng.<br>
+                Kiến trúc thượng tầng tác động trở lại cơ sở hạ tầng.
+            </p>
+
+            <div class="hero-cta">
+                <span class="label">Bắt đầu</span>
+                <a href="#lessons" class="cta-link">Đọc bài học →</a>
+                <a href="#quiz" class="cta-link">Làm trắc nghiệm →</a>
+            </div>
+        </div>
     </div>
-
-    <p id="progressText">Đã học: 0%</p>
-
 </section>
 
-<main id="lessonContainer"></main>
+<section class="stats wrap">
+    <div class="stat"><span class="label">Module</span><span class="stat-num">5</span></div>
+    <div class="stat"><span class="label">Bài học</span><span class="stat-num" id="lessonCount">–</span></div>
+    <div class="stat"><span class="label">Câu hỏi</span><span class="stat-num" id="quizCount">–</span></div>
+    <div class="stat"><span class="label">Flashcard</span><span class="stat-num">11</span></div>
+</section>
 
-<section class="quiz-section">
+<section class="features wrap">
+    <div class="section-head">
+        <h2>Chuyên đề</h2>
+        <span class="label">Hình ảnh hóa quy luật</span>
+    </div>
 
-    <h2>Trò Chơi Trắc Nghiệm</h2>
+    <article class="feature">
+        <figure class="figure feature-media">
+            <img src="images/home-cu-moi-dan-xen.png"
+                 alt="Hai người mặc trang phục cổ đứng nhìn những ống khói nhà máy đang nhả khói">
+        </figure>
+        <div class="feature-text">
+            <span class="label">Module 1 — Cơ sở hạ tầng</span>
+            <h3>Cái cũ còn sót, cái mới đang lên</h3>
+            <p>
+                Trong một xã hội luôn tồn tại đan xen ba loại quan hệ sản xuất:
+                <strong>thống trị</strong> chi phối toàn bộ đời sống kinh tế,
+                <strong>tàn dư</strong> còn sót lại từ xã hội cũ, và
+                <strong>mầm mống</strong> đang hình thành cho xã hội tương lai.
+            </p>
+            <button class="cta-link" onclick="showDetail(2)">Đọc bài →</button>
+        </div>
+    </article>
+
+    <article class="feature feature-reverse">
+        <figure class="figure feature-media">
+            <img src="images/home-chong-tham-nhung.png"
+                 alt="Tranh cổ động: Toàn dân kiên quyết đấu tranh phòng, chống tham nhũng, tiêu cực">
+        </figure>
+        <div class="feature-text">
+            <span class="label">Module 5 — Nhà nước pháp quyền</span>
+            <h3>Kiểm soát quyền lực, chống tham nhũng</h3>
+            <p>
+                Quyền lực không được kiểm soát dẫn tới lạm quyền, tham nhũng và lợi ích nhóm.
+                Công khai, minh bạch và <strong>sự giám sát của Nhân dân</strong> là điều kiện
+                để kiến trúc thượng tầng thúc đẩy chứ không kìm hãm kinh tế.
+            </p>
+            <button class="cta-link" onclick="showDetail(6)">Đọc bài →</button>
+        </div>
+    </article>
+</section>
+
+<section class="controls wrap" id="lessons">
+    <div class="section-head">
+        <h2>Bài học</h2>
+        <span class="label">Đọc theo thứ tự hoặc tìm theo từ khóa</span>
+    </div>
+
+    <div class="controls-row">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Tìm kiếm bài học…"
+        >
+
+        <div class="progress">
+            <p id="progressText" class="label">Đã học: 0%</p>
+            <div class="progress-wrapper">
+                <div id="progressBar"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<main id="lessonContainer" class="wrap lesson-grid"></main>
+
+<section class="quiz-section wrap" id="quiz">
+
+    <h2 class="band">Trắc nghiệm</h2>
 
     <div id="quizContainer"></div>
 
-    <button id="submitQuiz">
-        Nộp bài
-    </button>
-
-    <button id="resetQuiz">
-        Làm lại
-    </button>
+    <div class="quiz-actions">
+        <button id="submitQuiz" class="btn btn-solid">Nộp bài</button>
+        <button id="resetQuiz" class="btn">Làm lại</button>
+    </div>
 
     <div id="quizResult"></div>
 
 </section>
 
+<footer class="footer">
+    <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+            <span>Ôn tập vững — thi tự tin</span><span class="marquee-mark">CSHT ✦ KTTT</span>
+            <span>Ôn tập vững — thi tự tin</span><span class="marquee-mark">CSHT ✦ KTTT</span>
+            <span>Ôn tập vững — thi tự tin</span><span class="marquee-mark">CSHT ✦ KTTT</span>
+            <span>Ôn tập vững — thi tự tin</span><span class="marquee-mark">CSHT ✦ KTTT</span>
+        </div>
+    </div>
+    <div class="wrap footer-row">
+        <span class="label">MLN111 — Triết học Mác - Lênin</span>
+        <span class="label">Nội dung dựa trên slide Nhóm 8</span>
+    </div>
+</footer>
+
 <div id="modal" class="modal">
 
     <div class="modal-content">
 
-        <span id="closeModal">&times;</span>
+        <button id="closeModal" aria-label="Đóng">&times;</button>
 
         <h2 id="modalTitle"></h2>
 

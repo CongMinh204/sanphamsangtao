@@ -1,13 +1,39 @@
 const container =
     document.getElementById("lessonContainer");
 
+const modal =
+    document.getElementById("modal");
+
+const modalTitle =
+    document.getElementById("modalTitle");
+
+const modalBody =
+    document.getElementById("modalBody");
+
 let lessons = [];
+
+let completed =
+    JSON.parse(
+        localStorage.getItem("completed_csht")
+    ) || [];
+
+const pad = n => String(n).padStart(2, "0");
+
+document.getElementById("todayDate").innerText =
+    new Date().toLocaleDateString("vi-VN", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric"
+    });
 
 fetch("lessons.json")
     .then(res => res.json())
     .then(data => {
 
         lessons = data;
+
+        document.getElementById("lessonCount").innerText =
+            data.length;
 
         renderLessons(data);
 
@@ -19,44 +45,45 @@ function renderLessons(data) {
 
     container.innerHTML = "";
 
+    if (data.length === 0) {
+
+        container.innerHTML =
+            `<p class="empty-state">Không tìm thấy bài học phù hợp.</p>`;
+
+        return;
+    }
+
     data.forEach(item => {
 
         const card =
-            document.createElement("div");
+            document.createElement("article");
 
         card.className = "card";
 
         card.innerHTML = `
-            <h2>${item.id}. ${item.title}</h2>
-            <p>${item.summary}</p>
+            <span class="card-no">${pad(item.id)}</span>
+            <h3 class="card-title">${item.title}</h3>
+            <p class="card-summary">${item.summary}</p>
 
-            <button
-            class="detail-btn"
-            onclick="showDetail(${item.id})">
-            Xem chi tiết
-            </button>
+            <div class="card-actions">
+                <button
+                class="detail-btn"
+                onclick="showDetail(${item.id})">
+                Đọc bài
+                </button>
 
-            <button
-            class="summary-btn"
-            onclick="showSummary(${item.id})">
-            Xem tóm tắt
-            </button>
+                <button
+                class="summary-btn"
+                onclick="showSummary(${item.id})">
+                Tóm tắt
+                </button>
+            </div>
         `;
 
         container.appendChild(card);
     });
 
 }
-
-const modal =
-    document.getElementById("modal");
-
-const modalTitle =
-    document.getElementById("modalTitle");
-
-const modalBody =
-    document.getElementById("modalBody");
-
 
 async function showDetail(id) {
 
@@ -79,6 +106,22 @@ async function showDetail(id) {
         modalBody.innerHTML =
             marked.parse(content);
 
+        modalBody.querySelectorAll("img").forEach(img => {
+
+            const link =
+                document.createElement("a");
+
+            link.href = img.getAttribute("src");
+            link.target = "_blank";
+            link.rel = "noopener";
+            link.title = "Mở ảnh cỡ gốc";
+
+            img.loading = "lazy";
+            img.replaceWith(link);
+            link.appendChild(img);
+
+        });
+
     } catch (error) {
 
         modalBody.innerHTML =
@@ -86,12 +129,11 @@ async function showDetail(id) {
 
     }
 
-    modal.style.display = "block";
+    openModal();
 
     markCompleted(id);
 
 }
-
 
 function showSummary(id) {
 
@@ -106,28 +148,47 @@ function showSummary(id) {
     modalBody.innerHTML =
         `<p>${lesson.summary}</p>`;
 
-    modal.style.display = "block";
+    openModal();
 
 }
 
+function openModal() {
+
+    modal.style.display = "block";
+
+    modal.querySelector(".modal-content").scrollTop = 0;
+
+}
+
+function closeModal() {
+
+    modal.style.display = "none";
+
+}
 
 document
     .getElementById("closeModal")
-    .onclick = () => {
-
-        modal.style.display = "none";
-
-    };
+    .onclick = closeModal;
 
 window.onclick = (event) => {
 
     if (event.target === modal) {
 
-        modal.style.display = "none";
+        closeModal();
 
     }
 
 };
+
+document.addEventListener("keydown", e => {
+
+    if (e.key === "Escape") {
+
+        closeModal();
+
+    }
+
+});
 
 document
     .getElementById("searchInput")
@@ -155,14 +216,6 @@ document
 
     });
 
-
-
-let completed =
-    JSON.parse(
-        localStorage.getItem("completed")
-    ) || [];
-
-
 function markCompleted(id) {
 
     if (!completed.includes(id)) {
@@ -170,7 +223,7 @@ function markCompleted(id) {
         completed.push(id);
 
         localStorage.setItem(
-            "completed",
+            "completed_csht",
             JSON.stringify(completed)
         );
 
@@ -179,7 +232,6 @@ function markCompleted(id) {
     }
 
 }
-
 
 function updateProgress() {
 
@@ -206,6 +258,9 @@ const quizContainer =
 
 if (quizContainer) {
 
+    document.getElementById("quizCount").innerText =
+        quizData.length;
+
     quizData.forEach((q, index) => {
 
         const div =
@@ -214,17 +269,20 @@ if (quizContainer) {
         div.className = "question";
 
         div.innerHTML = `
-            <h3>${index + 1}. ${q.question}</h3>
+            <h3>
+                <span class="q-no">Câu ${pad(index + 1)}</span>
+                ${q.question}
+            </h3>
 
             ${q.options.map((opt, i) => `
-                <label>
+                <label class="option">
                     <input
                         type="radio"
                         name="q${index}"
                         value="${i}">
-                    ${opt}
+                    <span class="option-key">${"ABCD"[i]}</span>
+                    <span>${opt}</span>
                 </label>
-                <br>
             `).join("")}
         `;
 
@@ -271,17 +329,14 @@ if (quizContainer) {
                 if (!selected) {
 
                     resultBox.innerHTML =
-                        `
-                    <span class="wrong">
-                        ❌ Chưa chọn đáp án
-                    </span>
-                    `;
+                        `<span class="wrong">Chưa chọn đáp án</span>`;
 
                     return;
                 }
 
                 const userAnswer =
                     Number(selected.value);
+
                 document
                     .querySelectorAll(
                         `input[name="q${index}"]`
@@ -297,26 +352,15 @@ if (quizContainer) {
                     score++;
 
                     resultBox.innerHTML =
-                        `
-                    <span class="correct">
-                        ✅ Chính xác
-                    </span>
-                    `;
+                        `<span class="correct">✓ Chính xác</span>`;
 
                 } else {
 
-                    resultBox.innerHTML =
-                        `
-                    <span class="wrong">
-                        ❌ Sai
-                    </span>
-
-                    <br>
-
-                    <span class="answer">
-                        Đáp án đúng:
-                        ${q.options[q.answer]}
-                    </span>
+                    resultBox.innerHTML = `
+                        <span class="wrong">✕ Sai</span>
+                        <span class="answer">
+                            Đáp án đúng: ${"ABCD"[q.answer]}. ${q.options[q.answer]}
+                        </span>
                     `;
                 }
 
@@ -325,10 +369,7 @@ if (quizContainer) {
             document
                 .getElementById("quizResult")
                 .innerHTML = `
-                <h2>
-                    🎯 Kết quả:
-                    ${score}/${quizData.length}
-                </h2>
+                <h2>Kết quả: ${score}/${quizData.length}</h2>
             `;
 
             localStorage.setItem(
@@ -369,29 +410,27 @@ if (quizContainer) {
 const darkModeBtn =
     document.getElementById("darkModeBtn");
 
-// load trạng thái đã lưu
-if (localStorage.getItem("theme") === "dark") {
-    document.body.classList.add("dark");
-    darkModeBtn.innerText = "☀️ Light Mode";
+function applyTheme(isDark) {
+
+    document.body.classList.toggle("dark", isDark);
+
+    darkModeBtn.innerText =
+        isDark ? "Giao diện sáng" : "Giao diện tối";
+
 }
+
+applyTheme(localStorage.getItem("theme") === "dark");
 
 darkModeBtn.addEventListener("click", () => {
 
-    document.body.classList.toggle("dark");
-
     const isDark =
-        document.body.classList.contains("dark");
+        !document.body.classList.contains("dark");
 
-    if (isDark) {
+    applyTheme(isDark);
 
-        localStorage.setItem("theme", "dark");
-        darkModeBtn.innerText = "☀️ Light Mode";
-
-    } else {
-
-        localStorage.setItem("theme", "light");
-        darkModeBtn.innerText = "🌙 Dark Mode";
-
-    }
+    localStorage.setItem(
+        "theme",
+        isDark ? "dark" : "light"
+    );
 
 });

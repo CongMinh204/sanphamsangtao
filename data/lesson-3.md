@@ -1,23 +1,25 @@
+![Đổi mới 1986: CSHT chuyển từ kinh tế đơn nhất, bao cấp sang kinh tế thị trường nhiều thành phần, kéo theo KTTT đổi mới](images/lesson-3-doi-moi-1986.png)
 
+## Nguyên lý
 
-## Khái niệm
+KTTT phát sinh từ CSHT và phản ánh CSHT → không thể giải thích KTTT từ chính nó hay từ ý chí chủ quan.
 
-Khách thể nhận thức là bộ phận của hiện thực khách quan trở thành đối tượng nhận thức của chủ thể.
+## 3 khía cạnh quyết định
 
-## Đặc điểm
+1. **Sự ra đời** của KTTT
+2. **Tính chất và cấu trúc** của KTTT
+3. **Sự biến đổi** của KTTT – khi CSHT đổi thì KTTT đổi theo:
+   - Chính trị, pháp luật → đổi **nhanh**
+   - Đạo đức, tôn giáo, phong tục → đổi **chậm**
 
-- Không đồng nhất với toàn bộ hiện thực khách quan.
-- Có thể là vật chất, tư tưởng, tâm lý hoặc hiện tượng xã hội.
-- Thay đổi theo trình độ phát triển của thực tiễn.
+## Case study: Đổi mới 1986
 
-## Phân biệt
+| | Trước 1986 | Sau 1986 |
+|---|---|---|
+| **CSHT** | Kinh tế đơn nhất (Nhà nước + tập thể), quản lý tập trung | Kinh tế thị trường định hướng XHCN, nhiều thành phần |
+| **KTTT** | Pháp luật đơn giản | Hiến pháp 1992, 2013; hệ thống luật kinh tế hiện đại; cải cách hành chính; xây dựng Nhà nước pháp quyền |
 
-Khách thể nhận thức rộng hơn đối tượng nhận thức.
+## ⚠️ Bẫy hay gặp
 
-Ví dụ:
-
-Con người là khách thể nhận thức của nhiều ngành khoa học.
-
-Y học chỉ nghiên cứu cơ thể.
-
-Tâm lý học chỉ nghiên cứu đời sống tâm lý.
+- Hỏi "yếu tố nào biến đổi **chậm** nhất" → đạo đức, tôn giáo, phong tục.
+- Hỏi "yếu tố nào biến đổi **nhanh** nhất" → chính trị, pháp luật.

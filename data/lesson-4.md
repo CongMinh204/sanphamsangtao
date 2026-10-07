@@ -1,23 +1,26 @@
+![Hai chiều tác động: KTTT phù hợp quy luật kinh tế thúc đẩy CSHT, KTTT ngược quy luật kinh tế kìm hãm CSHT](images/lesson-4-hai-chieu-tac-dong.png)
 
+## Tính độc lập tương đối
 
-## Mối quan hệ biện chứng
+KTTT **không phải sản phẩm thụ động** mà có tính độc lập tương đối và tác động trở lại CSHT.
 
-Chủ thể và khách thể nhận thức không tồn tại tách rời mà luôn tác động qua lại với nhau.
+## 2 chiều tác động
 
-Trong hoạt động nhận thức:
+| ✅ Phù hợp quy luật kinh tế → THÚC ĐẨY | ❌ Ngược quy luật kinh tế → KÌM HÃM |
+|---|---|
+| Chính sách hợp lý | Quan liêu |
+| Pháp luật minh bạch | Tham nhũng |
+| Cải cách hành chính | Luật chồng chéo |
 
-- Chủ thể hướng tới khách thể để khám phá bản chất của sự vật.
-- Khách thể cung cấp thông tin và dữ liệu cho chủ thể.
-- Thực tiễn là cầu nối giữa chủ thể và khách thể.
+## Ví dụ doanh nghiệp
 
-## Vai trò của thực tiễn
+- **Thủ tục khó** → tăng chi phí, thời gian → doanh nghiệp khó mở rộng.
+- **Cải cách** → môi trường thuận lợi → thu hút đầu tư, tạo việc làm.
 
-Thông qua hoạt động thực tiễn:
+## Vai trò đặc biệt của Nhà nước
 
-- Chủ thể mở rộng phạm vi nhận thức.
-- Khách thể ngày càng được khám phá sâu sắc hơn.
-- Xuất hiện các khách thể nhận thức mới.
+Nhà nước tác động **trực tiếp** đến kinh tế.
 
-## Ý nghĩa
+## Kết luận
 
-Mối quan hệ giữa chủ thể và khách thể là cơ sở để hiểu được bản chất của quá trình nhận thức và sự phát triển của tri thức khoa học.
+KTTT phù hợp → thúc đẩy CSHT; KTTT không phù hợp → kìm hãm CSHT.
