@@ -1,5 +1,3 @@
-> Nội dung dựa trên slide Nhóm 8. Mỗi module gồm: Tóm tắt → Bảng/Sơ đồ → Ví dụ → Bẫy hay gặp.
-
 ## Sơ đồ quan hệ
 
 ```
