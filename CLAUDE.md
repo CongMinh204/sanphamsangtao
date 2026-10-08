@@ -19,7 +19,8 @@ Chỉ cần mở `index.html` hoặc serve file tĩnh để chạy, không cần
   theo dõi tiến độ học (`localStorage`), chấm trắc nghiệm, toggle dark mode.
 - `quizData.js` — mảng câu hỏi trắc nghiệm (`question`, `options[]`, `answer` là index đúng).
 - `lessons.json` — danh mục bài học: `id`, `title`, `summary`, `file` (đường dẫn tới file
-  `.md` tương ứng trong `data/`).
+  `.md` tương ứng trong `data/`). Trường tùy chọn `"type": "flashcard"` biến bài thành bộ thẻ
+  lật (kiểu Quizlet) thay vì hiển thị Markdown — xem mục "Bài dạng flashcard".
 - `data/lesson-N.md` — nội dung chi tiết từng bài, viết bằng Markdown, render qua `marked.js`
   (CDN) khi người dùng bấm "Đọc bài".
 
@@ -34,6 +35,16 @@ Chỉ cần mở `index.html` hoặc serve file tĩnh để chạy, không cần
    riêng ở modal). Giữ văn phong ngắn gọn, dùng bullet list cho các ý liệt kê.
 4. Khi thêm câu hỏi vào `quizData.js`, `answer` là **index** (bắt đầu từ 0) trong `options[]`,
    không phải giá trị đáp án.
+
+### Bài dạng flashcard
+
+- Đánh dấu `"type": "flashcard"` trong `lessons.json`; nút trên thẻ bài đổi thành "Học thẻ".
+- Dữ liệu vẫn nằm trong file `.md`: **một bảng Markdown 2 cột**. Dòng tiêu đề bảng là nhãn
+  của 2 mặt thẻ (vd. `Mặt trước | Mặt sau`), mỗi dòng sau là một thẻ. Nội dung ngoài bảng bị bỏ
+  qua. Ô có thể dùng Markdown inline (in đậm, nghiêng). Không dùng ký tự `|` trong ô.
+- Bộ thẻ (`renderDeck()` trong `script.js`): bấm thẻ để lật, nút ← → và phím ← → chuyển thẻ,
+  Space lật thẻ, "Trộn thẻ" bật/tắt thứ tự ngẫu nhiên, thanh tiến độ + bộ đếm `01 / 11`.
+  Chuyển thẻ luôn quay về mặt trước mà không chạy animation (tránh lộ đáp án thẻ sau).
 
 ## Quy ước code
 
@@ -73,7 +84,8 @@ Mọi UI mới phải theo đúng hệ thống dưới đây.
 
 - Container: class `.wrap` (max 1240px, gutter 24px / 16px trên mobile).
 - Chia lưới bằng **đường kẻ 1px `--rule`** (border-left giữa cột, border-bottom giữa hàng),
-  không dùng card bóng đổ, không bo góc (trừ nút tròn `.pill`, `#closeModal`, `.option-key`).
+  không dùng card bóng đổ, không bo góc (trừ nút tròn `.pill`, `#closeModal`, `.option-key`,
+  `.deck-arrow`).
 - Mở đầu mỗi section bằng `.section-head` (kẻ trên 4px + tiêu đề display lớn) hoặc `.band`
   (dải nền `--ink`, chữ `--paper`, display 900 uppercase).
 - Số liệu nổi bật: pattern `.stat` (nhãn nhỏ + số display rất lớn).

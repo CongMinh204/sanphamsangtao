@@ -979,6 +979,163 @@ button {
 }
 
 /* =========================
+   FLASHCARD DECK
+========================= */
+.deck {
+    padding-top: 20px;
+}
+
+.deck-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.pill[aria-pressed="true"] {
+    background: var(--ink);
+    color: var(--paper);
+}
+
+.deck-progress {
+    width: 0%;
+    height: 100%;
+    background: var(--ink);
+    transition: width .3s;
+}
+
+.flashcard {
+    display: block;
+    width: 100%;
+    margin-top: 24px;
+    padding: 0;
+    background: none;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    perspective: 1800px;
+}
+
+.flashcard:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 6px;
+}
+
+/* Both faces share one grid cell, so the card grows to fit the longer side. */
+.flashcard-inner {
+    display: grid;
+    transform-style: preserve-3d;
+    transition: transform .55s cubic-bezier(.2, .7, .2, 1);
+}
+
+.flashcard.is-flipped .flashcard-inner {
+    transform: rotateY(180deg);
+}
+
+.flashcard.no-anim .flashcard-inner {
+    transition: none;
+}
+
+.flashcard-face {
+    grid-area: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    min-height: 340px;
+    padding: 20px 28px 22px;
+    border: 1px solid var(--rule);
+    border-top-width: 4px;
+    background: var(--paper);
+    color: var(--ink);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transition: background .2s;
+}
+
+.flashcard:hover .flashcard-front {
+    background: var(--paper-2);
+}
+
+.flashcard-back {
+    transform: rotateY(180deg);
+    background: var(--ink);
+    color: var(--paper);
+}
+
+.flashcard-back .label {
+    color: var(--paper);
+    opacity: .7;
+}
+
+.flashcard-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.flashcard-text {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(1.5rem, 3.6vw, 2.4rem);
+    line-height: 1.2;
+}
+
+.flashcard-back .flashcard-text {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: clamp(1.25rem, 2.8vw, 1.8rem);
+    line-height: 1.4;
+}
+
+.deck-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    margin-top: 24px;
+}
+
+.deck-arrow {
+    width: 52px;
+    height: 52px;
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    background: transparent;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background .15s, color .15s;
+}
+
+.deck-arrow:hover:not(:disabled) {
+    background: var(--ink);
+    color: var(--paper);
+}
+
+.deck-arrow:disabled {
+    opacity: .3;
+    cursor: default;
+}
+
+.deck-count {
+    min-width: 120px;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 32px;
+    text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .flashcard-inner,
+    .flashcard-face,
+    .deck-progress {
+        transition: none;
+    }
+}
+
+/* =========================
    TABLET
 ========================= */
 @media (max-width: 900px) {
@@ -1168,5 +1325,27 @@ button {
 
     #modalBody h2 {
         font-size: 21px;
+    }
+
+    .deck-help {
+        display: none;
+    }
+
+    .deck-bar {
+        justify-content: flex-end;
+    }
+
+    .flashcard-face {
+        min-height: 280px;
+        padding: 16px 18px 18px;
+    }
+
+    .deck-nav {
+        gap: 18px;
+    }
+
+    .deck-count {
+        min-width: 96px;
+        font-size: 26px;
     }
 }

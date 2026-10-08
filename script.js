@@ -69,7 +69,7 @@ function renderLessons(data) {
                 <button
                 class="detail-btn"
                 onclick="showDetail(${item.id})">
-                Đọc bài
+                ${item.type === "flashcard" ? "Học thẻ" : "Đọc bài"}
                 </button>
 
                 <button
@@ -92,6 +92,8 @@ async function showDetail(id) {
 
     if (!lesson) return;
 
+    deck = null;
+
     modalTitle.innerText =
         lesson.title;
 
@@ -103,24 +105,32 @@ async function showDetail(id) {
         const content =
             await response.text();
 
-        modalBody.innerHTML =
-            marked.parse(content);
+        if (lesson.type === "flashcard") {
 
-        modalBody.querySelectorAll("img").forEach(img => {
+            renderDeck(content);
 
-            const link =
-                document.createElement("a");
+        } else {
 
-            link.href = img.getAttribute("src");
-            link.target = "_blank";
-            link.rel = "noopener";
-            link.title = "Mở ảnh cỡ gốc";
+            modalBody.innerHTML =
+                marked.parse(content);
 
-            img.loading = "lazy";
-            img.replaceWith(link);
-            link.appendChild(img);
+            modalBody.querySelectorAll("img").forEach(img => {
 
-        });
+                const link =
+                    document.createElement("a");
+
+                link.href = img.getAttribute("src");
+                link.target = "_blank";
+                link.rel = "noopener";
+                link.title = "Mở ảnh cỡ gốc";
+
+                img.loading = "lazy";
+                img.replaceWith(link);
+                link.appendChild(img);
+
+            });
+
+        }
 
     } catch (error) {
 
@@ -131,7 +141,221 @@ async function showDetail(id) {
 
     openModal();
 
+    // Move focus into the modal so Space flips the card instead of re-pressing the button behind it.
+    if (deck) {
+
+        document
+            .getElementById("flashcard")
+            .focus({ preventScroll: true });
+
+    }
+
     markCompleted(id);
+
+}
+
+let deck = null;
+
+function parseFlashcards(markdown) {
+
+    const rows = markdown
+        .split("\n")
+        .map(line => line.trim())
+        .filter(line => line.startsWith("|"))
+        .map(line =>
+            line
+                .replace(/^\||\|$/g, "")
+                .split("|")
+                .map(cell => marked.parseInline(cell.trim()))
+        );
+
+    const [labels, , ...cards] = rows;
+
+    return {
+        labels,
+        cards: cards.map(([front, back]) => ({ front, back }))
+    };
+
+}
+
+function renderDeck(markdown) {
+
+    const { labels, cards } =
+        parseFlashcards(markdown);
+
+    deck = {
+        cards,
+        order: cards,
+        index: 0
+    };
+
+    modalBody.innerHTML = `
+        <div class="deck">
+
+            <div class="deck-bar">
+                <span class="label deck-help">Bấm vào thẻ để lật · Space: lật · ← →: chuyển thẻ</span>
+                <button type="button" class="pill" id="deckShuffle" aria-pressed="false">Trộn thẻ</button>
+            </div>
+
+            <div class="progress-wrapper">
+                <div class="deck-progress" id="deckProgress"></div>
+            </div>
+
+            <button type="button" class="flashcard" id="flashcard">
+                <span class="flashcard-inner">
+
+                    <span class="flashcard-face flashcard-front">
+                        <span class="flashcard-meta">
+                            <span class="label">${labels[0]}</span>
+                            <span class="label card-index"></span>
+                        </span>
+                        <span class="flashcard-text" id="cardFront"></span>
+                        <span class="label">Nhấn để xem đáp án</span>
+                    </span>
+
+                    <span class="flashcard-face flashcard-back">
+                        <span class="flashcard-meta">
+                            <span class="label">${labels[1]}</span>
+                            <span class="label card-index"></span>
+                        </span>
+                        <span class="flashcard-text" id="cardBack"></span>
+                        <span class="label">Nhấn để lật lại</span>
+                    </span>
+
+                </span>
+            </button>
+
+            <div class="deck-nav">
+                <button type="button" class="deck-arrow" id="deckPrev" aria-label="Thẻ trước">←</button>
+                <span class="deck-count" id="deckCount"></span>
+                <button type="button" class="deck-arrow" id="deckNext" aria-label="Thẻ sau">→</button>
+            </div>
+
+        </div>
+    `;
+
+    document.getElementById("flashcard").onclick = flipCard;
+    document.getElementById("deckPrev").onclick = () => moveCard(-1);
+    document.getElementById("deckNext").onclick = () => moveCard(1);
+    document.getElementById("deckShuffle").onclick = toggleShuffle;
+
+    showCard();
+
+}
+
+function showCard() {
+
+    const card =
+        document.getElementById("flashcard");
+
+    const { order, index } = deck;
+
+    const total = order.length;
+
+    // Unflip without animation so the next card's answer never shows mid-rotation.
+    card.classList.add("no-anim");
+    setFlipped(false);
+
+    document.getElementById("cardFront").innerHTML =
+        order[index].front;
+
+    document.getElementById("cardBack").innerHTML =
+        order[index].back;
+
+    card.querySelectorAll(".card-index").forEach(el => {
+
+        el.innerText = `Thẻ ${pad(index + 1)}`;
+
+    });
+
+    document.getElementById("deckCount").innerText =
+        `${pad(index + 1)} / ${pad(total)}`;
+
+    document.getElementById("deckProgress").style.width =
+        `${(index + 1) / total * 100}%`;
+
+    document.getElementById("deckPrev").disabled =
+        index === 0;
+
+    document.getElementById("deckNext").disabled =
+        index === total - 1;
+
+    void card.offsetWidth;
+    card.classList.remove("no-anim");
+
+}
+
+function setFlipped(flipped) {
+
+    const card =
+        document.getElementById("flashcard");
+
+    card.classList.toggle("is-flipped", flipped);
+
+    card.querySelector(".flashcard-front")
+        .setAttribute("aria-hidden", flipped);
+
+    card.querySelector(".flashcard-back")
+        .setAttribute("aria-hidden", !flipped);
+
+}
+
+function flipCard() {
+
+    setFlipped(
+        !document
+            .getElementById("flashcard")
+            .classList.contains("is-flipped")
+    );
+
+}
+
+function moveCard(step) {
+
+    const next =
+        deck.index + step;
+
+    if (next < 0 || next >= deck.order.length) return;
+
+    deck.index = next;
+
+    showCard();
+
+}
+
+function toggleShuffle() {
+
+    const button =
+        document.getElementById("deckShuffle");
+
+    const shuffled =
+        button.getAttribute("aria-pressed") !== "true";
+
+    button.setAttribute("aria-pressed", shuffled);
+
+    deck.order =
+        shuffled ? shuffle(deck.cards) : deck.cards;
+
+    deck.index = 0;
+
+    showCard();
+
+}
+
+function shuffle(list) {
+
+    const result = [...list];
+
+    for (let i = result.length - 1; i > 0; i--) {
+
+        const j =
+            Math.floor(Math.random() * (i + 1));
+
+        [result[i], result[j]] = [result[j], result[i]];
+
+    }
+
+    return result;
 
 }
 
@@ -141,6 +365,8 @@ function showSummary(id) {
         lessons.find(x => x.id === id);
 
     if (!lesson) return;
+
+    deck = null;
 
     modalTitle.innerText =
         lesson.title;
@@ -164,6 +390,8 @@ function closeModal() {
 
     modal.style.display = "none";
 
+    deck = null;
+
 }
 
 document
@@ -185,6 +413,23 @@ document.addEventListener("keydown", e => {
     if (e.key === "Escape") {
 
         closeModal();
+
+        return;
+
+    }
+
+    if (!deck) return;
+
+    if (e.key === "ArrowRight") moveCard(1);
+
+    if (e.key === "ArrowLeft") moveCard(-1);
+
+    // A focused button already handles Space natively.
+    if (e.key === " " && !e.target.closest("button")) {
+
+        e.preventDefault();
+
+        flipCard();
 
     }
 

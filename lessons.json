@@ -38,7 +38,8 @@
   {
     "id": 7,
     "title": "Flashcard ôn tập",
-    "summary": "Các câu hỏi – đáp ngắn giúp ghi nhớ nhanh những khái niệm và con số quan trọng.",
-    "file": "data/lesson-7.md"
+    "summary": "Bộ thẻ lật hỏi – đáp giúp ghi nhớ nhanh những khái niệm và con số quan trọng.",
+    "file": "data/lesson-7.md",
+    "type": "flashcard"
   }
 ]
