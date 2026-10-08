@@ -70,7 +70,7 @@ const quizData = [
     answer:2
 },
 {
-    question:"Trong xã hội phong kiến, hệ tư tưởng chủ đạo (theo ví dụ của slide) là:",
+    question:"Trong xã hội phong kiến, hệ tư tưởng chủ đạo là:",
     options:[
         "Phật giáo",
         "Nho giáo",
